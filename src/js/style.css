@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  background-color: black;
+}
+
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: black;
+}
+
+.digit-box {
+  width: 60px;
+  height: 80px;
+  margin: 0 5px;
+  background-color: #111;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
