@@ -1,32 +1,27 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
+import React, { useEffect, useState } from "react";
+import "./styles.css";
 
-const DigitBox = ({ value }) => (
-  <div className="digit-box">
-    {value}
-  </div>
-);
+export default function App() {
+  const [seconds, setSeconds] = useState(0);
 
-function SecondsCounter() {
-  const [seconds, setSeconds] = useState(0);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds(prev => prev + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  // Format seconds as 6-digit string
+  const padded = String(seconds).padStart(6, "0").split("");
 
-  const padded = String(seconds).padStart(6, "0").split("");
-
-  return (
-    <div className="counter-wrapper">
-      <DigitBox value={<i className="fa-regular fa-clock"></i>} />
-      {padded.map((digit, index) => (
-        <DigitBox key={index} value={digit} />
-      ))}
-    </div>
-  );
+  return (
+    <div className="timer-container">
+      <div className="digit">🕒</div>
+      {padded.map((digit, index) => (
+        <div className="digit" key={index}>
+          {digit}
+        </div>
+      ))}
+    </div>
+  );
 }
-
-export default SecondsCounter;
